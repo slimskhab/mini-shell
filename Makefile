@@ -1,12 +1,14 @@
-all: main.o parse.o
-	gcc -o shell main.o
+all: shell
+
+shell: main.o parse.o
+	gcc main.o parse.o -o shell
 
 main.o: main.c
-	gcc -o main.o -c main.c
+	gcc -c main.c -o main.o
 
 parse.o: parse.c parse.h
-	gcc -o parse.o -c parse.c
+	gcc -c parse.c -o parse.o
 
 clean:
-	rm -f shell main.o parse.o
+	rm *.o shell
 
