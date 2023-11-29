@@ -1,7 +1,7 @@
 all: shell
 
-shell: main.o parse.o
-	gcc main.o parse.o -o shell
+shell: main.o parse.o launch.o
+	gcc main.o parse.o launch.o -o shell
 
 main.o: main.c
 	gcc -c main.c -o main.o
@@ -12,3 +12,5 @@ parse.o: parse.c parse.h
 clean:
 	rm *.o shell
 
+launch.o: launch.c launch.h
+	gcc -c launch.c -o launch.o

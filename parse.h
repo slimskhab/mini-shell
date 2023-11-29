@@ -67,3 +67,4 @@ int parse_simple_command(
     SimpleCommand* command);
 
 #endif // __H_PARSE__
+
