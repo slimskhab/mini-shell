@@ -150,7 +150,16 @@ int parse_compound_command(
     } else if (strcmp(tokens[consumed], "||") == 0) {
         command->op = OPERATOR_OR;
         consumed++;
-    } else {
+    }else if (strcmp(tokens[consumed],"|")== 0){
+	command->op= OPERATOR_PIPE;
+	consumed++;
+    }
+else if (strcmp(tokens[consumed],">")== 0){
+        command->op= OPERATOR_REDIRECT;
+        consumed++;
+    }
+
+     else {
         command->op = OPERATOR_NONE;
         return consumed;
     }
@@ -176,8 +185,12 @@ int parse_simple_command(
     if (
         nb_tokens < 1 || //
         (strcmp(tokens[0], "&&") == 0) || //
-        (strcmp(tokens[0], "||") == 0) || //
+        (strcmp(tokens[0], "||") == 0) ||
+ 	(strcmp(tokens[0], "|") == 0) || //
         (strcmp(tokens[0], ";") == 0) || //
+
+ (strcmp(tokens[0], ">") == 0) || //
+
         (strcmp(tokens[0], "&") == 0) //
     ) {
         return -1;
@@ -190,7 +203,10 @@ int parse_simple_command(
         if (
             (strcmp(tokens[i], "&&") == 0) || //
             (strcmp(tokens[i], "||") == 0) || //
+	    (strcmp(tokens[i], "|") == 0) || //
             (strcmp(tokens[i], ";") == 0) || //
+ (strcmp(tokens[i], ">") == 0) || //
+
             (strcmp(tokens[i], "&") == 0) //
         ) {
             break;

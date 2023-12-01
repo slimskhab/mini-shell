@@ -1,0 +1,2 @@
+int interactive_mode();
+

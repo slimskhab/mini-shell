@@ -12,4 +12,4 @@ int launch_command(CommandSequence* command);
 int launch_compound_command(CompoundCommand* command);
 // Execute a simple command
 // Returns 0 if there is no error, or -1 if there is an error
-int launch_simple_command(SimpleCommand* command);
+int launch_simple_command(SimpleCommand* command,int read_pipe,int write_pipe);

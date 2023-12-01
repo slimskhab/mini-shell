@@ -18,7 +18,9 @@ typedef struct SimpleCommand SimpleCommand;
 enum CommandOperator {
     OPERATOR_NONE,
     OPERATOR_AND,
-    OPERATOR_OR
+    OPERATOR_OR,
+    OPERATOR_PIPE,
+    OPERATOR_REDIRECT
 };
 typedef enum CommandOperator CommandOperator;
 
